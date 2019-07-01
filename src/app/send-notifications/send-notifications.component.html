@@ -1,0 +1,60 @@
+<div class="content">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card" style="margin-top: 140px;">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">{{ 'fcm.title' | translate }}</h4>
+                  <p class="card-category">{{ 'fcm.title_desc' | translate }}</p>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="pushMsgForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'fcm.msg_title' | translate }}</label>
+                          <input type="text" formControlName="title" name="title" class="form-control">
+                          <div class="error" *ngIf="pushMsgForm.controls['title'].hasError('required') && pushMsgForm.controls['title'].touched">Title is required</div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'fcm.msg_body' | translate }}</label>
+                          <input type="text" formControlName="body" name="body" class="form-control">
+                            <div class="error" *ngIf="pushMsgForm.controls['body'].hasError('required') && pushMsgForm.controls['body'].touched">Body is required</div>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'fcm.devices' | translate }}</label>
+                          <select formControlName="devices" name="devices" class="form-control">
+                            <!-- <option value="all">All</option> -->
+                            <ng-container *ngFor="let dev of devices; let i = index">
+                              <option  *ngIf="(userToken != devices[i].token)" [value]="devices[i].token">
+                                {{devices[i]._id}}
+                              </option>
+                            </ng-container>
+                          </select>  
+                            <div class="error" *ngIf="pushMsgForm.controls['devices'].hasError('required') && pushMsgForm.controls['devices'].touched">Device is required</div>
+                          </div>
+                        </div>
+                      </div>
+                    <button type="submit" [disabled]="pushMsgForm.invalid" class="btn btn-primary pull-right">{{ 'register.submit' | translate }}</button>
+                    <div class="clearfix"></div>
+                  </form>
+                  <div *ngIf="invalidRegister&&!successMsg" class="alert alert-danger" role="alert">
+                        {{ errorMsg }}
+                  </div>
+                  <div *ngIf="successMsg&&!invalidRegister" class="alert alert-success" role="alert">
+                        {{ successMsg }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

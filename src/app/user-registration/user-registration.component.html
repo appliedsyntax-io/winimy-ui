@@ -1,0 +1,91 @@
+<div class="content">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="card" style="margin-top: 140px;">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">{{ 'register.title' | translate }}</h4>
+                  <p class="card-category">{{ 'register.title_desc' | translate }}</p>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.username' | translate }}</label>
+                          <input type="text" formControlName="username" name="username" class="form-control">
+                          <div class="error" *ngIf="registerForm.controls['username'].hasError('required') && registerForm.controls['username'].touched">Username is required</div>
+                          </div>
+                        </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.email' | translate }}</label>
+                          <input type="email" formControlName="email" name="email" class="form-control">
+                          <div class="error" *ngIf="registerForm.controls['email'].hasError('required') && registerForm.controls['email'].touched">E-mail is required</div>
+                          <div class="error" *ngIf="registerForm.controls['email'].hasError('email') && registerForm.controls['email'].touched">Email must be a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.fname' | translate }}</label>
+                          <input type="text" formControlName="fname" name="fname" class="form-control">
+                          <div class="error" *ngIf="registerForm.controls['fname'].hasError('required') && registerForm.controls['fname'].touched">First Name is required</div>
+                          </div>
+                        </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.lname' | translate }}</label>
+                          <input type="text" formControlName="lname" name="lname" class="form-control">
+                          <div class="error" *ngIf="registerForm.controls['lname'].hasError('required') && registerForm.controls['lname'].touched">Last Name is required</div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.address' | translate }}</label>
+                          <input type="text" formControlName="address" name="address" class="form-control">
+                            <div class="error" *ngIf="registerForm.controls['address'].hasError('required') && registerForm.controls['address'].touched">Address is required</div>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.city' | translate }}</label>
+                          <input type="text" formControlName="city" name="city" class="form-control">
+                            <div class="error" *ngIf="registerForm.controls['city'].hasError('required') && registerForm.controls['city'].touched">City is required</div>
+                          </div>
+                        </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.country' | translate }}</label>
+                          <input type="text" formControlName="country" name="country" class="form-control">
+                            <div class="error" *ngIf="registerForm.controls['country'].hasError('required') && registerForm.controls['country'].touched">Country is required</div>
+                          </div>
+                        </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">{{ 'register.postcode' | translate }}</label>
+                          <input type="text" formControlName="postcode" name="postcode" class="form-control">
+                            <div class="error" *ngIf="registerForm.controls['postcode'].hasError('required') && registerForm.controls['postcode'].touched">Postal Code is required</div>
+                          </div>
+                        </div>
+                      </div>
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary pull-right">{{ 'register.submit' | translate }}</button>
+                    <div class="clearfix"></div>
+                  </form>
+                  <div *ngIf="invalidRegister&&!successMsg" class="alert alert-danger" role="alert">
+                        Incorrect email / password please try again.
+                  </div>
+                  <div *ngIf="successMsg&&!invalidRegister" class="alert alert-success" role="alert">
+                        {{ successMsg }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+.dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus, .dropdown-menu a:hover, .dropdown-menu a:focus, .dropdown-menu a:active {
+    background-color: #ffa934 !important;
+  }
+
+  .form-control, .is-focused .form-control {
+    background-image: linear-gradient(to top, #ffa934 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+  }
+
+  .form-check .form-check-input:checked+.form-check-sign .check{
+    background: #ffa934;
+  }
+  .error{
+    color: #FF0000;
+  }
+  .main-head{
+    padding: 4px 0px 0px 75px; height: 80px; background: linear-gradient(60deg, #ffc768, #ffa934);
+  }
+  .custom-nav-header{
+    position: fixed; background: linear-gradient(60deg,  #ffc768, #ffa934); color: white; height: 80px !important;
+  }
+
+  .card-body .row{
+    padding: 15px;
+  }
+  .dropdown-menu{
+    right: 10px;
+    left: auto;
+  }
+
+@media (max-width: 991px){
+  .navbar .navbar-collapse.collapse.show{
+    display: block!important;
+  }
+  .navbar-collapse{
+    right: initial!important;
+    left: 0;
+  }
+  .navbar .collapse .navbar-nav .nav-item .nav-link{
+    color: #000;
+  }
+}
